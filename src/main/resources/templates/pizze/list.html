@@ -13,26 +13,27 @@
 <body>
 
 <div class="container">
-    <h1>Pizze List</h1>
+    <h1 class="text-center">Pizze List</h1>
     <div th:if="${pizzaList.size() == 0}">The list is empty</div>
     <table class="table" th:unless="${pizzaList.size() == 0}">
         <thead>
         <tr>
+            <th></th>
             <th>Nome</th>
-            <th>Foto</th>
             <th>Prezzo</th>
             <th></th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="pizza : ${pizzaList}">
-            <td th:text="${pizza.nome}"></td>
+
             <td>
                 <img class="img-list" th:src="@{${pizza.foto}}">
             </td>
+            <td th:text="${pizza.nome}"></td>
             <td th:text="${pizza.prezzo}"></td>
             <td>
-                <a class="btn btn-primary" th:href="@{/pizza/show/{id}(id=${pizza.id})}">Dettagli</a>
+                <a class="btn btn-primary" th:href="@{/pizze/show/{id}(id=${pizza.id})}">Dettagli</a>
             </td>
         </tr>
         </tbody>
