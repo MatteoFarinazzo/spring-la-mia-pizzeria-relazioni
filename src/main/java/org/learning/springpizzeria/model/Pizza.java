@@ -14,11 +14,13 @@ public class Pizza {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(nullable = false)
 
-private String nome;
-private String descrizione;
-private URL foto;
-private BigDecimal prezzo;
+    private String nome;
+    private String descrizione;
+    private String foto;
+    @Column(nullable = false)
+    private BigDecimal prezzo;
 
 // getter setter
 
@@ -39,11 +41,19 @@ private BigDecimal prezzo;
         this.descrizione = descrizione;
     }
 
-    public URL getFoto() {
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getFoto() {
         return foto;
     }
 
-    public void setFoto(URL foto) {
+    public void setFoto(String foto) {
         this.foto = foto;
     }
 
