@@ -10,28 +10,28 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <title>Pizze</title>
 </head>
-<body>
+<body class="bg-black" id="body_bg">
 
-<div class="container">
-    <h1 class="text-center mt-4">Pizze List</h1>
+<div class="container bg-transparent">
+    <h1 class="text-center text-light  my-4">Pizze List</h1>
     <div th:if="${pizzaList.size() == 0}">The list is empty</div>
-    <table class="table" th:unless="${pizzaList.size() == 0}">
-        <thead>
-        <tr>
+    <table class="table text-light" th:unless="${pizzaList.size() == 0}">
+        <thead class="bg-transparent">
+        <tr class="bg-transparent">
             <th></th>
-            <th>Nome</th>
-            <th>Prezzo</th>
+            <th class="text-light">Nome</th>
+            <th class="text-light">Prezzo</th>
             <th></th>
         </tr>
         </thead>
-        <tbody>
+        <tbody class="bg-transparent">
         <tr th:each="pizza : ${pizzaList}">
 
             <td>
                 <img class="img-list" th:src="@{${pizza.foto}}">
             </td>
-            <td th:text="${pizza.nome}"></td>
-            <td th:text="${pizza.prezzo}"></td>
+            <td class="text-light" th:text="${pizza.nome}"></td>
+            <td class="text-light" th:text="${pizza.prezzo}"></td>
             <td>
                 <a class="btn btn-primary" th:href="@{/pizze/show/{id}(id=${pizza.id})}">Dettagli</a>
             </td>
