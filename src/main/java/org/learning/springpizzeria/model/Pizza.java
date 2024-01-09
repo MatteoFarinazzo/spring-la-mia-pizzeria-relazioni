@@ -3,7 +3,6 @@ package org.learning.springpizzeria.model;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
-import java.net.URL;
 
 @Entity
 @Table(name = "pizzas")
