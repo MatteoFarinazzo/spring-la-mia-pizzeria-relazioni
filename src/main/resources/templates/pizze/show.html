@@ -10,19 +10,21 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <title>Dettagli Pizze</title>
 </head>
-<body>
+<body class="bg-black">
 
-<div class="container">
+<div class="container bg-black">
     <div class="row">
-        <div class="col-8">
-            <img class="img-full" th:src="@{${pizza.foto}}">
+        <div class="col-8 mt-3">
+            <img class="img-fluid" th:src="@{${pizza.foto}}">
         </div>
 
-        <div class="col-4">
-            <p class="text-light, text-center">testotesaofuiahof</p>
+        <div class="col-4 text-light mt-5">
+            <h1 class="text-light, text-center pb-3 mt-5" th:text="${pizza.nome}"></h1>
+            <p class="text-light, text-center pb-3" th:text="${pizza.descrizione}"></p>
+            <p class="text-light, text-center" th:text="${pizza.prezzo}"></p>
         </div>
     </div>
-    <div>
+    <div class="text-center mt-5">
         <a th:href="@{/pizze}">Ritorna alla lista</a>
     </div>
 

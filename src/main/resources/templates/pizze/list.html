@@ -13,7 +13,7 @@
 <body>
 
 <div class="container">
-    <h1 class="text-center">Pizze List</h1>
+    <h1 class="text-center mt-4">Pizze List</h1>
     <div th:if="${pizzaList.size() == 0}">The list is empty</div>
     <table class="table" th:unless="${pizzaList.size() == 0}">
         <thead>
