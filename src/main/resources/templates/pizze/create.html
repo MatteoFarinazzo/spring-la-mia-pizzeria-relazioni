@@ -33,7 +33,7 @@
 
         <div class="col-6">
             <label class="form-label" for="prezzo">Prezzo</label>
-            <input class="form-control" type="number" id="prezzo" th:field="*{prezzo}"
+            <input class="form-control" type="text" id="prezzo" th:field="*{prezzo}"
                    th:errorClass="is-invalid">
             <div class="invalid-feedback" th:if="${#fields.hasErrors('prezzo')}">
                 <ul>
@@ -44,8 +44,8 @@
 
         <div class="col-12 pt-2">
             <label class="form-label" for="descrizione">Descrizione / ingredienti</label>
-            <input class="form-control" type="text" id="descrizione" th:field="*{descrizione}"
-                   th:errorClass="is-invalid">
+            <textarea class="form-control" type="text" id="descrizione" th:field="*{descrizione}"
+                      th:errorClass="is-invalid"></textarea>
             <div class="invalid-feedback" th:if="${#fields.hasErrors('descrizione')}">
                 <ul>
                     <li th:each="err : ${#fields.errors('descrizione')}" th:text="${err}"></li>

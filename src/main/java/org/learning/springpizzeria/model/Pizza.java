@@ -19,6 +19,7 @@ public class Pizza {
     @Column(nullable = false)
     @NotEmpty
     private String nome;
+    @NotEmpty
     private String descrizione;
     private String foto;
     @NotNull
