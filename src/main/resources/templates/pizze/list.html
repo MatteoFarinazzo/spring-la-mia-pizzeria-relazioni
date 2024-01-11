@@ -31,13 +31,15 @@
                 <img class="img-list" th:src="@{${pizza.foto}}">
             </td>
             <td>
-                <div class=""><p class="text-light border-0 " th:text="${pizza.nome}"></p></div>
+                <div class="d-flex align-items-center"><p class="text-light border-0" th:text="${pizza.nome}"></p>
+                </div>
             </td>
             <td>
                 <div class="text-light border-0 " th:text="${pizza.prezzo} + ' ' + € "></div>
             </td>
-            <td>
-                <a class="btn btn-outline-light " th:href="@{/pizze/show/{id}(id=${pizza.id})}">Dettagli</a>
+            <td class="ps-5">
+                <a class="btn btn-outline-light me-2 " th:href="@{/pizze/show/{id}(id=${pizza.id})}">Dettagli</a>
+                <a class="btn btn-outline-light " th:href="@{/pizze/edit/{id}(id=${pizza.id})}">Modifica</a>
             </td>
         </tr>
         </tbody>
