@@ -7,11 +7,24 @@
     width: auto;
 }
 
-#body_bg{
+#body_list_bg{
     background-image: url(../pizza-4968645_1280.jpg) ;
+    background-size:cover;
+}
+
+#body_edit_bg{
+    background-image: url(../pizza-bg-2.jpg) ;
     background-size:cover;
 }
 
 th, td{
 background-color: black !important;
+}
+
+td{
+    vertical-align: middle;
+}
+
+.centro{
+    vertical-align: middle;
 }
