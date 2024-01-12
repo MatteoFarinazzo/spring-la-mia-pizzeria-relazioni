@@ -10,11 +10,32 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <title>Pizze</title>
 </head>
-<body class="bg-black  bg-opacity-50" id="body_list_bg">
+<body class="bg-black  bg-opacity-50 position-relative" id="body_list_bg">
+<!--<div th:text="${redirectMessage}" th:if="${redirectMessage !=null}"></div>-->
 
-<div class="container bg-transparent">
+<div class="container bg-transparent ">
+
+    <div th:if="${redirectMessage !=null}" aria-live="polite" aria-atomic="true"
+         class="bg-body-secondary  bd-example-toasts rounded-3">
+        <div class="toast-container p-3 bottom-0 start-50 translate-middle-x" id="toastPlacement"
+             data-original-class="toast-container p-3">
+            <div class="toast fade show">
+                <div class="toast-header">
+                    <!--<img class="bd-placeholder-img rounded me-2" width="20" height="20"
+                         url="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice"
+                         focusable="false">
+                        <rect width="100%" height="100%" fill="#007aff"></rect>
+                    </img>-->
+                    <strong class="me-auto">Pizza alert</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body" th:text="${redirectMessage}"></div>
+            </div>
+        </div>
+    </div>
+
     <h1 class="text-center text-light  my-4">Pizze List</h1>
-    <div th:if="${pizzaList.size() == 0}">The list is empty</div>
+    <div class="text-light text-center mt-5" th:if="${pizzaList.size() == 0}"><h3>The list is empty</h3></div>
     <table class="table text-light " th:unless="${pizzaList.size() == 0}">
         <thead class="border-0">
         <tr>
@@ -27,25 +48,30 @@
         <tbody>
         <tr class="border-0" th:each="pizza : ${pizzaList}">
 
-            <td class="">
+            <td>
                 <img class="img-list" th:src="@{${pizza.foto}}">
             </td>
-            <td class="main">
-                <div><p class="text-light border-0" th:text="${pizza.nome}"></p>
-                </div>
+            <td>
+                <div class="text-light border-0" th:text="${pizza.nome}"></div>
             </td>
-            <td class="main">
+            <td>
                 <div class="text-light border-0 " th:text="${pizza.prezzo} + ' ' + € "></div>
             </td>
-            <td class="text-center main">
-                <a class="btn btn-outline-light me-2 " th:href="@{/pizze/show/{id}(id=${pizza.id})}">Dettagli</a>
-                <a class="btn btn-outline-light " th:href="@{/pizze/edit/{id}(id=${pizza.id})}">Modifica</a>
+            <td class="text-center">
+                <div class="d-flex justify-content-center align-items-center">
+                    <a class="btn btn-outline-light me-2 " th:href="@{/pizze/show/{id}(id=${pizza.id})}">Dettagli</a>
+                    <a class="btn btn-outline-light me-2" th:href="@{/pizze/edit/{id}(id=${pizza.id})}">Modifica</a>
+                    <form th:action="@{/pizze/delete/{id}(id=${pizza.id})}" method="post"
+                          onsubmit="return confirm('Sei sicuro di voler eliminare questa pizza?')">
+                        <button type="submit" class="btn btn-outline-light">Cancella</button>
+                    </form>
+                </div>
             </td>
         </tr>
         </tbody>
     </table>
 
-    <div class="mt-3 d-flex justify-content-end" style="padding-right: 100px;">
+    <div class="mt-3 d-flex justify-content-end" style="padding-right: 110px;">
         <a class="btn btn-outline-light" th:href="@{/pizze/create}">Aggiungi la tua
             pizza</a>
     </div>
