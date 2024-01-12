@@ -17,6 +17,11 @@
     background-size:cover;
 }
 
+#body_create_bg{
+    background-image: url(../parmesan-pasta-recipe-with-piece-cheese-raw-pasta-other-ingredients_1220-584.jpg) ;
+    background-size:cover;
+}
+
 th, td{
 background-color:black !important;
 }
