@@ -18,7 +18,7 @@ public class Pizza {
     private Integer id;
     @Column(nullable = false)
     @NotEmpty
-    private String nome;
+    private String name;
     @NotEmpty
     private String descrizione;
     private String foto;
@@ -30,12 +30,12 @@ public class Pizza {
 // getter setter
 
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescrizione() {

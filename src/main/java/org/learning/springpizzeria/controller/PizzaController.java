@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -93,11 +94,17 @@ public class PizzaController {
         Optional<Pizza> result = pizzaRepository.findById(id);
         if (result.isPresent()) {
             pizzaRepository.deleteById(id);
-            redirectAttributes.addFlashAttribute("redirectMessage", "La pizza " + result.get().getNome() + " è stata eliminata");
+            redirectAttributes.addFlashAttribute("redirectMessage", "La pizza " + result.get().getName() + " è stata eliminata");
             return "redirect:/pizze";
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Pizza with id" + id + "not found");
         }
+    }
 
+    @GetMapping("/search")
+    public String search(@RequestParam(name = "search") String searchKeyword, Model model) {
+        List<Pizza> pizzaList = pizzaRepository.findByNameContaining(searchKeyword);
+        model.addAttribute("pizzaList", pizzaList);
+        return "pizze/list";
     }
 }

@@ -27,12 +27,12 @@
                     class="row mt-3"
             >
                 <div class="col-6">
-                    <label class="form-label" for="nome">Nome</label>
-                    <input class="form-control" type="text" id="nome" th:field="*{nome}"
+                    <label class="form-label" for="name">Nome</label>
+                    <input class="form-control" type="text" id="name" th:field="*{name}"
                            th:errorClass="is-invalid">
-                    <div class="invalid-feedback" th:if="${#fields.hasErrors('nome')}">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('name')}">
                         <ul>
-                            <li th:each="err : ${#fields.errors('nome')}" th:text="${err}"></li>
+                            <li th:each="err : ${#fields.errors('name')}" th:text="${err}"></li>
                         </ul>
                     </div>
                 </div>
