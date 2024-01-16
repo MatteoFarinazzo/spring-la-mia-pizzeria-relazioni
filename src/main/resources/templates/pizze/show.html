@@ -10,7 +10,7 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <title>Dettagli Pizze</title>
 </head>
-<body class="bg-black">
+<body class="bg-black ">
 
 <div class="container bg-black">
     <div class="row">
@@ -18,29 +18,31 @@
             <img class="img-fluid" th:src="@{${pizza.foto}}">
         </div>
 
-        <div class="col-4 text-light mt-5 centro">
+        <div class="col-4 text-light mt-5 pt-5 centro">
             <h1 class="text-light, text-center pb-3 mt-5" th:text="${pizza.name}"></h1>
             <p class="text-light, text-center pb-3" th:text="${pizza.descrizione}"></p>
             <p class="text-light, text-center" th:text="${pizza.prezzo}+ ' ' + € "></p>
-
-            <section class="mt-5">
+        </div>
+        <div class="row">
+            <div class="col-6"></div>
+            <section class="mt-5 col-6">
                 <h4>
                     <span>Aggiungi offerta</span>
                     <a th:href="@{/offerte/create(pizzaId=${pizza.id})}" class="btn btn-outline-light">+</a>
                 </h4>
-                <table class="table" th:if="${pizza.offerte.size() > 0}">
+                <table class="table mt-3" th:if="${pizza.offerte.size() > 0}">
                     <thead>
                     <tr>
-                        <th>Nome offerta</th>
-                        <th>Data di inizio</th>
-                        <th>Data di fine</th>
+                        <th class="text-light">Nome offerta</th>
+                        <th class="text-light">Data di inizio</th>
+                        <th class="text-light">Data di fine</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="offer : ${pizza.offerte}">
-                        <td th:text="${offer.title}"></td>
-                        <td th:text="${offer.startDate}"></td>
-                        <td th:text="${offer.endDate}"></td>
+                        <td class="text-light" th:text="${offer.title}"></td>
+                        <td class="text-light" th:text="${offer.startDate}"></td>
+                        <td class="text-light" th:text="${offer.endDate}"></td>
                     </tr>
                     </tbody>
                 </table>
@@ -49,6 +51,7 @@
                 </div>
             </section>
         </div>
+
     </div>
     <div class="text-center mt-5">
         <a class="text-decoration-none text-warning" th:href="@{/pizze}">Ritorna alla lista</a>

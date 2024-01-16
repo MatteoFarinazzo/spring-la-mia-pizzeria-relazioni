@@ -32,9 +32,10 @@ public class DiscountController {
     public String offer(@RequestParam(name = "pizzaId", required = true) Integer pizzaId, Model model) {
         Optional<Pizza> result = pizzaRepository.findById(pizzaId);
         if (result.isPresent()) {
-            Pizza pizzaOffer = result.get();
-            model.addAttribute("pizza", pizzaOffer);
+            Pizza pizza = result.get();
+            model.addAttribute("pizza", pizza);
             Offerta newOffer = new Offerta();
+            newOffer.setPizza(pizza);
             model.addAttribute("offerta", newOffer);
             return "offerte/create";
         } else {
