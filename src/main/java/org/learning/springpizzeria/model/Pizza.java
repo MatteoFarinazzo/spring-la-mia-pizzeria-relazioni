@@ -28,7 +28,7 @@ public class Pizza {
     @Column(nullable = false)
     private BigDecimal prezzo;
 
-    @OneToMany(mappedBy = "pizza")
+    @OneToMany(mappedBy = "pizza", orphanRemoval = true)
     private List<Offerta> offerte;
 
 // getter setter

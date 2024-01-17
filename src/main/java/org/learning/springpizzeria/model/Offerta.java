@@ -1,6 +1,9 @@
 package org.learning.springpizzeria.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
 
 import java.time.LocalDate;
 
@@ -11,7 +14,10 @@ public class Offerta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @NotNull
     private String title;
+    @NotNull
+    /*@FutureOrPresent*/
     private LocalDate startDate;
     private LocalDate endDate;
 
@@ -56,5 +62,9 @@ public class Offerta {
 
     public void setPizza(Pizza pizza) {
         this.pizza = pizza;
+    }
+
+    public boolean isExpired() {
+        return endDate.isBefore(LocalDate.now());
     }
 }
