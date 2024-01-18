@@ -2,12 +2,37 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/resources :: head('Creazione Ingredienti')"></head>
 <body>
-<!--ingredientsList-->
+
 <nav th:replace="fragments/navbar.html :: navbar('ingredienti')"></nav>
 <main class="container">
-    <h1>Ingredienti</h1>
-    <form id="ingredients-create" class="row" th:action="@{/ingredients/create}" th:object="${formIngredient}">
-        <div class="col-6"></div>
+    <h1 th:text="${formIngredient.id == null ? 'Create Ingredient' : 'Edit Ingredient'}">Ingredienti</h1>
+    <form id="ingredients-create" class="row" th:action="@{/ingredients/create}" th:object="${formIngredient}"
+          method="post">
+        <div class="col-6">
+            <label class="form-label" for="name">Nome</label>
+            <input class="form-control" type="text" id="name" th:field="*{name}"
+                   th:errorClass="is-invalid">
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('name')}">
+                <ul>
+                    <li th:each="err : ${#fields.errors('name')}" th:text="${err}"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-6">
+            <label class="form-label" for="description">Descrizione</label>
+            <input class="form-control" type="text" id="description" th:field="*{description}"
+                   th:errorClass="is-invalid">
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('description')}">
+                <ul>
+                    <li th:each="err : ${#fields.errors('description')}" th:text="${err}"></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-12 mt-4 mb-4">
+            <button type="submit" class="btn btn-outline-dark me-2">Save</button>
+            <a class="btn btn-outline-dark" th:href="@{/ingredients}">Cancel</a>
+        </div>
 
     </form>
 </main>
