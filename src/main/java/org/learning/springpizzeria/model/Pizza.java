@@ -31,6 +31,9 @@ public class Pizza {
     @OneToMany(mappedBy = "pizza", orphanRemoval = true)
     private List<Offerta> offerte;
 
+    @ManyToMany
+    private List<Ingredient> ingredients;
+
 // getter setter
 
 
@@ -80,5 +83,28 @@ public class Pizza {
 
     public void setOfferte(List<Offerta> offerte) {
         this.offerte = offerte;
+    }
+
+    public List<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public boolean deletable() {
+        int notExpiredNum = 0;
+        for (Offerta offerta : offerte) {
+            if (!offerta.isExpired()) {
+                notExpiredNum++;
+            }
+        }
+        if (notExpiredNum != 0) {
+            return false;
+        } else {
+            return true;
+        }
+
     }
 }

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/resources :: head('Dettagli pizze')"></head>
 <body class="bg-black ">
-<nav th:replace="fragments/navbar.html :: navbar('list')"></nav>
+<nav th:replace="fragments/navbar.html :: navbar('pizze')"></nav>
 
 <div class="container bg-black">
     <div class="row">
@@ -12,8 +12,11 @@
 
         <div class="col-4 text-light mt-5 pt-5 centro">
             <h1 class="text-light, text-center pb-3 mt-5" th:text="${pizza.name}"></h1>
-            <p class="text-light, text-center pb-3" th:text="${pizza.descrizione}"></p>
-            <p class="text-light, text-center" th:text="${pizza.prezzo}+ ' ' + € "></p>
+            <h6 class="text-light, text-center pb-3" th:text="${pizza.descrizione}"></h6>
+            <p class="text-light"><i class="fa-solid fa-pizza-slice"></i><span th:each="ingr : ${pizza.ingredients}"
+                                                                               th:text="${${ingr.name}}"></span>
+            </p>
+            <p class="text-light, text-center mt-3" th:text="${pizza.prezzo}+ ' ' + € "></p>
         </div>
         <div class="row">
             <div class="col-6"></div>

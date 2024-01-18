@@ -33,3 +33,7 @@ td{
 .centro{
     vertical-align: middle;
 }
+
+disabled{
+  cursor: not-allowed;
+}

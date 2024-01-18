@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/resources :: head('Creazione Ingredienti')"></head>
+<body>
+<!--ingredientsList-->
+<nav th:replace="fragments/navbar.html :: navbar('ingredienti')"></nav>
+<main class="container">
+    <h1>Ingredienti</h1>
+    <form id="ingredients-create" class="row" th:action="@{/ingredients/create}" th:object="${formIngredient}">
+        <div class="col-6"></div>
+
+    </form>
+</main>
+
+
+<th:block th:replace="fragments/resources :: script"></th:block>
+</body>
+</html>

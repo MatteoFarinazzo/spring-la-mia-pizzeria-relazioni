@@ -3,7 +3,7 @@
 <head th:replace="fragments/resources :: head('Pizze')"></head>
 
 <body class="bg-black  bg-opacity-50 position-relative" id="body_list_bg">
-<nav th:replace="fragments/navbar.html :: navbar('list')"></nav>
+<nav th:replace="fragments/navbar.html :: navbar('pizze')"></nav>
 <!--<div th:text="${redirectMessage}" th:if="${redirectMessage !=null}"></div>-->
 
 <div class="container bg-transparent ">
@@ -14,6 +14,7 @@
              data-original-class="toast-container p-3">
             <div class="toast fade show">
                 <div class="toast-header">
+                    <i class="fa-solid fa-pizza-slice"></i>
                     <strong class="me-auto">Pizza alert</strong>
                     <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                 </div>
@@ -61,10 +62,15 @@
                 <div class="d-flex justify-content-center align-items-center">
                     <a class="btn btn-outline-light me-2 " th:href="@{/pizze/show/{id}(id=${pizza.id})}">Dettagli</a>
                     <a class="btn btn-outline-light me-2" th:href="@{/pizze/edit/{id}(id=${pizza.id})}">Modifica</a>
-                    <form th:action="@{/pizze/delete/{id}(id=${pizza.id})}" method="post"
+                    <form th:if="${pizza.deletable == true}" th:action="@{/pizze/delete/{id}(id=${pizza.id})}" method="post"
                           onsubmit="return confirm('Sei sicuro di voler eliminare questa pizza?')">
                         <button type="submit" class="btn btn-outline-light">Cancella</button>
                     </form>
+
+                    <button th:unless="${pizza.deletable == true}" class="btn btn-outline-light disabled" >
+                        Cancella</i>
+                    </button>
+
                 </div>
             </td>
         </tr>

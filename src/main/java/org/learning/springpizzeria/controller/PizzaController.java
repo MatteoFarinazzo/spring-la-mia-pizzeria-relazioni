@@ -2,6 +2,7 @@ package org.learning.springpizzeria.controller;
 
 import jakarta.validation.Valid;
 import org.learning.springpizzeria.model.Pizza;
+import org.learning.springpizzeria.repository.IngredientRepository;
 import org.learning.springpizzeria.repository.PizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,6 +23,9 @@ import java.util.Optional;
 public class PizzaController {
     @Autowired
     private PizzaRepository pizzaRepository;
+
+    @Autowired
+    private IngredientRepository ingredientRepository;
 
     @GetMapping
     public String index(Model model) {
@@ -47,12 +50,15 @@ public class PizzaController {
     public String create(Model model) {
         Pizza pizza = new Pizza();
         model.addAttribute("pizza", pizza);
+        // passo tramite il model la lista degli ingredienti //
+        model.addAttribute("ingredientsList", ingredientRepository.findAll());
         return "pizze/create";
     }
 
     @PostMapping("/create")
-    public String personalizzata(@Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult) {
+    public String personalizzata(@Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
+            model.addAttribute("ingredientsList", ingredientRepository.findAll());
             return "pizze/create";
         }
 

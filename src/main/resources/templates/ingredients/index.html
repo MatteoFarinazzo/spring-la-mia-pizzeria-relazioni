@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/resources :: head('Ingredienti')"></head>
+<body>
+<!--ingredientsList-->
+<nav th:replace="fragments/navbar.html :: navbar('ingredienti')"></nav>
+<main class="container">
+    <h1>Ingredienti</h1>
+    <ul>
+        <li th:each="ingr : ${ingredientsList}">
+            <div th:text="|${ingr.name} (${ingr.description})|"></div>
+        </li>
+    </ul>
+</main>
+
+
+<th:block th:replace="fragments/resources :: script"></th:block>
+</body>
+</html>
