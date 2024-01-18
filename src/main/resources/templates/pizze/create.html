@@ -48,7 +48,7 @@
                 <div class="col-6">
                     <h5>Ingredienti</h5>
                     <div class="form-check" th:each="ingr : ${ingredientsList}">
-                        <input class="form-check-input" type="checkbox" value="ingr.id" th:id="|ingr-${ingr.id}|"
+                        <input class="form-check-input" type="checkbox" th:value="${ingr.id}" th:id="|ingr-${ingr.id}|"
                                th:field="*{ingredients}">
                         <label class="form-check-label" th:for="|ingr-${ingr.id}|" th:text="${ingr.name}">
                         </label>

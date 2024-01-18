@@ -61,7 +61,6 @@ public class PizzaController {
             model.addAttribute("ingredientsList", ingredientRepository.findAll());
             return "pizze/create";
         }
-
         Pizza savedPizza = pizzaRepository.save(formPizza);
         return "redirect:/pizze/show/" + savedPizza.getId();
     }
@@ -71,6 +70,7 @@ public class PizzaController {
         Optional<Pizza> result = pizzaRepository.findById(id);
         if (result.isPresent()) {
             model.addAttribute("pizza", result.get());
+            model.addAttribute("ingredientsList", ingredientRepository.findAll());
             return "pizze/edit";
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Pizza with id" + id + "not found");
@@ -88,6 +88,7 @@ public class PizzaController {
             }
 
             formPizza.setFoto(pizzaToEdit.getFoto());
+            formPizza.setOfferte(pizzaToEdit.getOfferte());
             Pizza savedPizza = pizzaRepository.save(formPizza);
             return "redirect:/pizze/show/" + id;
         } else {
