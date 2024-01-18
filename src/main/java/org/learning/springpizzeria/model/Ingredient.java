@@ -14,6 +14,7 @@ public class Ingredient {
     @NotEmpty
     private String description;
 
+
     public Integer getId() {
         return id;
     }

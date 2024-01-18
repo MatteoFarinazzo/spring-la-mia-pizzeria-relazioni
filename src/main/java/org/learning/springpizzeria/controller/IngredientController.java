@@ -49,7 +49,7 @@ public class IngredientController {
     public String edit(@PathVariable Integer id, Model model) {
         Optional<Ingredient> result = ingredientRepository.findById(id);
         if (result.isPresent()) {
-            model.addAttribute("ingredient", result.get());
+            model.addAttribute("formIngredient", result.get());
             return "ingredients/create";
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Ingredient with id" + id + "not found");
@@ -57,7 +57,7 @@ public class IngredientController {
     }
 
     @PostMapping("/edit/{id}")
-    public String update(@PathVariable Integer id, @Valid @ModelAttribute("ingredient") Ingredient formIngredient, BindingResult bindingResult) {
+    public String update(@PathVariable Integer id, @Valid @ModelAttribute("formIngredient") Ingredient formIngredient, BindingResult bindingResult) {
 
         Optional<Ingredient> result = ingredientRepository.findById(id);
         if (result.isPresent()) {
@@ -66,6 +66,7 @@ public class IngredientController {
                 return "ingredients/create";
             }
 
+            formIngredient.setId(id);
             Ingredient savedIngredient = ingredientRepository.save(formIngredient);
             return "redirect:/ingredients";
         } else {

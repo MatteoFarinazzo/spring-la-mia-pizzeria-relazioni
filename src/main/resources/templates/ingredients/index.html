@@ -8,9 +8,9 @@
     <h1>Ingredienti</h1>
     <ul>
         <li th:each="ingr : ${ingredientsList}">
-            <div th:text="|${ingr.name} (${ingr.description})|">
+            <div><span th:text="|${ingr.name} (${ingr.description})|"></span>
                 <a class="btn btn-outline-dark" th:href="@{/ingredients/edit/{id}(id=${ingr.id})}">Modifica</a>
-                <form th:action="@{/ingredients/delete/{id}(id=${ingr.id})}" method="post"
+                <form class="d-inline-block" th:action="@{/ingredients/delete/{id}(id=${ingr.id})}" method="post"
                       onsubmit="return confirm('Sei sicuro di voler eliminare questo ingrediente?')">
                     <button type="submit" class="btn btn-outline-light">Cancella</button>
                 </form>
