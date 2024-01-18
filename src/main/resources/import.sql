@@ -8,4 +8,5 @@ INSERT INTO ingredients (description, name) VALUES('Salame di maiale speziato co
 INSERT INTO ingredients (description, name) VALUES('Provola di Agerola affumicata', 'Provola');
 INSERT INTO ingredients (description, name) VALUES('Basilico fresco', 'Basilico');
 INSERT INTO ingredients (description, name) VALUES('Olio extravergine di oliva', 'Olio evo');
+INSERT INTO ingredients (description, name) VALUES('Patate gialle I.G.P di Leonessa', 'Patate');
 

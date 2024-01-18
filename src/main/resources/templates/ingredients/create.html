@@ -5,8 +5,10 @@
 
 <nav th:replace="fragments/navbar.html :: navbar('ingredienti')"></nav>
 <main class="container">
-    <h1 th:text="${formIngredient.id == null ? 'Create Ingredient' : 'Edit Ingredient'}"></h1>
-    <form id="ingredients-create" class="row" th:action="@{/ingredients/create}" th:object="${formIngredient}"
+    <h1 th:text="${formIngredient.id == null ? 'Aggiungi un Ingrediente' : 'Modifica Ingrediente'}"></h1>
+    <form id="ingredients-create" class="row"
+          th:action="${formIngredient.id == null ? @{/ingredients/create} : @{/ingredients/edit/{id}(id=${formIngredient.id})}}"
+          th:object="${formIngredient}"
           method="post">
         <div class="col-6">
             <label class="form-label" for="name">Nome</label>
