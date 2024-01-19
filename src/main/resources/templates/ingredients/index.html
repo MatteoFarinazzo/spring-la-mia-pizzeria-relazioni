@@ -11,7 +11,8 @@
             <li th:each="ingr : ${ingredientsList}">
                 <div class="row mb-2">
                     <div class="col-9 center">
-                        <span class="" th:text="|${ingr.name} (${ingr.description})|"></span>
+                        <b th:text="${ingr.name}"></b><span class=""
+                                                            th:text="| (${ingr.description})|"></span>
                     </div>
                     <div class="col-3 text-center">
                         <div class="ms-auto">

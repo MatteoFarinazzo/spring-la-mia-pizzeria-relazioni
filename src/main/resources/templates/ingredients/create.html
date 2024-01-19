@@ -7,7 +7,8 @@
 <main class="container">
     <h1 th:text="${formIngredient.id == null ? 'Aggiungi un Ingrediente' : 'Modifica Ingrediente'}"></h1>
     <form id="ingredients-create" class="row"
-          th:action="${formIngredient.id == null ? @{/ingredients/create} : @{/ingredients/edit/{id}(id=${formIngredient.id})}}"
+          th:with="url=${formIngredient.id == null ? '/ingredients/create' : '/ingredients/edit/' + formIngredient.id}"
+          th:action="@{${url}}"
           th:object="${formIngredient}"
           method="post">
         <div class="col-6">
